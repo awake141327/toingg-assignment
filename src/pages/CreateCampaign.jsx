@@ -2,10 +2,12 @@ import { useState, useEffect, useContext } from "react";
 import { CampaignContext } from "../context/CampaignContext";
 import axios from "axios";
 
+const API_KEY = import.meta.env.VITE_TOINGG_API_KEY;
+const URL = import.meta.env.VITE_TOINGG_URL;
+
 const headers = {
   accept: "application/json",
-  Authorization:
-    "Bearer tg_71836293-0710-47f3-bc75-0da0997a3deb-wzWokn6_w1sYK8zLZmDf9g",
+  Authorization: `Bearer ${API_KEY}`,
   "Content-Type": "application/json",
 };
 
@@ -36,25 +38,20 @@ const CreateCampaign = () => {
 
   useEffect(() => {
     async function getVoice() {
-      const response = await axios.get(
-        "https://www.toingg.com/api/v3/get_supported_voices",
-        {
-          headers: {
-            Authorization:
-              "Bearer tg_71836293-0710-47f3-bc75-0da0997a3deb-wzWokn6_w1sYK8zLZmDf9g",
-          },
-        }
-      );
+      const response = await axios.get(`${URL}/api/v3/get_supported_voices`, {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      });
       setVoices(response.data.result.voice);
     }
 
     async function getLanguage() {
       const response = await axios.get(
-        "https://www.toingg.com/api/v3/get_supported_languages",
+        `${URL}/api/v3/get_supported_languages`,
         {
           headers: {
-            Authorization:
-              "Bearer tg_71836293-0710-47f3-bc75-0da0997a3deb-wzWokn6_w1sYK8zLZmDf9g",
+            Authorization: `Bearer ${API_KEY}`,
           },
         }
       );
@@ -68,7 +65,7 @@ const CreateCampaign = () => {
   async function createCampaign() {
     try {
       const response = await axios.post(
-        "https://www.toingg.com/api/v3/create_campaign/",
+        `${URL}/api/v3/create_campaign/`,
         campaign,
         {
           headers,
@@ -85,7 +82,7 @@ const CreateCampaign = () => {
 
   async function updateCampaign() {
     const response = await axios.post(
-      "https://www.toingg.com/api/v3/update_campaign/",
+      `${URL}/api/v3/update_campaign/`,
       { campaignModelData: campaign, campId: id },
       {
         headers,
