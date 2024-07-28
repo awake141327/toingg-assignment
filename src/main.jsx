@@ -5,7 +5,7 @@ import App from "./App.jsx";
 
 import "./index.css";
 
-// Importing out Theme Provider
+// Importing out Theme & Campaign Provider
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { CampaignProvider } from "./context/CampaignContext.jsx";
 

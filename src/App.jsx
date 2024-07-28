@@ -1,5 +1,10 @@
+// React Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// React
 import { useState } from "react";
+
+// Pages and Components
 import Layout from "./components/Layout";
 import KnowledgeBase from "./pages/KnowledgeBase";
 import CreateCampaign from "./pages/CreateCampaign";
@@ -7,6 +12,7 @@ import MakeCalls from "./pages/MakeCalls";
 import CampaignList from "./pages/CampaignList";
 
 function App() {
+  // KnowledgeBase File Data
   const [fileData, setFileData] = useState();
 
   return (

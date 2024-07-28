@@ -1,14 +1,20 @@
+// React
 import { useContext } from "react";
+
+// React Router
+import { Link } from "react-router-dom";
+
+// Theme
 import { ThemeContext } from "../context/ThemeContext";
 
+// Icons
 import { FaBook } from "react-icons/fa";
 import { IoMoon, IoSunny, IoCallSharp } from "react-icons/io5";
 import { IoIosCreate } from "react-icons/io";
 import { MdCampaign } from "react-icons/md";
 
-import { Link } from "react-router-dom";
-
 const Sidebar = () => {
+  // Handle Theme Toggle
   const { toggle, handleToggle } = useContext(ThemeContext);
 
   return (

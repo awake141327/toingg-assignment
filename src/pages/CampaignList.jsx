@@ -1,10 +1,11 @@
+// React
 import { useContext } from "react";
+
+// Campaign Context
 import { CampaignContext } from "../context/CampaignContext";
 
 const CampaignList = () => {
   const { campaigns } = useContext(CampaignContext);
-
-  console.log(campaigns);
 
   return (
     <div className="flex flex-wrap gap-5 justify-center">

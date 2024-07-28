@@ -1,10 +1,17 @@
+// React
 import { useState, useEffect, useContext } from "react";
+
+// Campaign Context
 import { CampaignContext } from "../context/CampaignContext";
+
+// Axios Library
 import axios from "axios";
 
+// API KEY and URL
 const API_KEY = import.meta.env.VITE_TOINGG_API_KEY;
 const URL = import.meta.env.VITE_TOINGG_URL;
 
+// Headers
 const headers = {
   accept: "application/json",
   Authorization: `Bearer ${API_KEY}`,
@@ -14,6 +21,7 @@ const headers = {
 const CreateCampaign = () => {
   const { setCampaigns } = useContext(CampaignContext);
 
+  // Initial State of our data.
   const initialState = {
     title: "",
     purpose: "",
@@ -36,6 +44,7 @@ const CreateCampaign = () => {
   const [campaign, setCampaign] = useState(initialState);
   const [update, setUpdate] = useState(false);
 
+  // GET SUPPORTED VOICES
   useEffect(() => {
     async function getVoice() {
       const response = await axios.get(`${URL}/api/v3/get_supported_voices`, {
@@ -46,6 +55,7 @@ const CreateCampaign = () => {
       setVoices(response.data.result.voice);
     }
 
+    // GET SUPPORTED LANGUAGES
     async function getLanguage() {
       const response = await axios.get(
         `${URL}/api/v3/get_supported_languages`,
@@ -62,6 +72,7 @@ const CreateCampaign = () => {
     getLanguage();
   }, []);
 
+  // CREATING THE CAMPAIGN
   async function createCampaign() {
     try {
       const response = await axios.post(
@@ -80,6 +91,7 @@ const CreateCampaign = () => {
     }
   }
 
+  // UPDATING THE CAMPAIGN
   async function updateCampaign() {
     const response = await axios.post(
       `${URL}/api/v3/update_campaign/`,

@@ -1,3 +1,5 @@
+// Page to upload the File and read its content to pass onto the create campaign page and use it their.
+
 const KnowledgeBase = ({ setFileData }) => {
   async function uploadFile(e) {
     e.preventDefault();
